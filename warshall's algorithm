@@ -1,13 +1,10 @@
 /*
-to check that there is path between two veertices we have 2 method 
-1]mulplication
-2]warshalla's algorithm
-
+to check that there is path between two veertices we use warshalla's algorithm
 transitive closare - Transitive Closure it the reachability matrix to reach from vertex u to vertex v of a graph
 */
+
 #include<iostream>
 using namespace std;
-
 class Graph
 {
 	int **G;
@@ -30,13 +27,11 @@ class Graph
 					G[i][j]=0;
 				}
 			}
-		}
-	
+		}	
 		void showGraph();
 		void insert(int u,int v,int w);
-	    void readGraph();
-	    void using_multiplication();
-	    void warshalls_algorithm();	   
+	        void readGraph();	 
+	        void warshalls_algorithm();	   
 };
 
 
@@ -52,25 +47,25 @@ void Graph::warshalls_algorithm()
 	 {
 	 	for(int j=0;j<n;j++)
 	 	{
-	 	 tc[i][j] =	G[i][j];
-	    }
+	 	  tc[i][j] = G[i][j] ;
+	        }
 	 }
 	 
- 	for(int k=0; k<n ; k++)
+ 	 for(int k=0; k<n ; k++)
 	 {
 	 	for(int i=0;i<n;i++)
-	    {
+	         {
 	 		for(int j=0;j<n;j++)
 	 		{
 	 			if(tc[i][j] == 0)
 	 			{
-	 		      if(tc[i][k] != 0 && tc[k][j] != 0)
+	 		           if(tc[i][k] != 0 && tc[k][j] != 0)
 				   {
 				      tc[i][j]=1;	
 				   }		
-			    }
-	        }	 	  	
-	    }
+			        }
+	                }	 	  	
+	         }
 	 }
 	 cout<<endl<<"transitive closare :"<<endl;
 	 for(int i=0;i<n;i++)
@@ -78,8 +73,8 @@ void Graph::warshalls_algorithm()
 	 	for(int j=0;j<n;j++)
 	 	{
 	 	  cout<<tc[i][j]<<"  ";	
-        }
-        cout<<endl;
+                }
+                cout<<endl;
 	 }
 }
 
@@ -93,8 +88,8 @@ void Graph::showGraph()
   	{
   	   cout<<G[i][j]<<"  ";
 		 	
-    }
-    cout<<endl;
+        }
+        cout<<endl;
   }		
 }
 
@@ -104,8 +99,7 @@ void Graph::insert(int u,int v,int w=1)
 	  G[u][v]=w;
 	  if(wt==0)
 	  {
-	  	G[v][u]=w;
-	  	
+	  	G[v][u]=w;	  	
 	  }
 }
 
